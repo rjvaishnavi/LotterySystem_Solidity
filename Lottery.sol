@@ -7,7 +7,7 @@ contract Lottery {
     uint public maxNoOfTickets; // maximum number of tickets in the lottery
     uint256 private ticketPrice = 0.01 ether; // base ticket price, which will be used later
     uint public noOfTickets; // no of present tickets in the system
-    address public owner; // the lottery owner address
+    address public LotteryOwner; // the lottery owner address
     address[] public buyers; // list of lottery buyers 
 
     enum LOTTERY_STATE {
@@ -24,7 +24,7 @@ contract Lottery {
         maxNoOfTickets = _maxNoOfTickets;
         ticketPrice = ticketPrice * _ticketPriceinHundredthPowerEth;
        // ticketPrice = _ticketPriceinHundredthPowerEth;
-        owner = msg.sender; // this is the lottery owner
+        LotteryOwner = msg.sender; // this is the lottery owner
         noOfTickets = 0;
         lottery_state = LOTTERY_STATE.OPEN; // setting the lottery to start state
     }
@@ -59,7 +59,7 @@ contract Lottery {
 
     // function of the lottery owner to forcefully end the lottery round
     function endLottery() public payable returns (string memory info){
-        require(msg.sender == owner, "You are not Lottery owner, you cannot invoke this!"); // you have to be owner
+        require(msg.sender == LotteryOwner, "You are not Lottery owner, you cannot invoke this!"); // you have to be owner
         require(lottery_state == LOTTERY_STATE.OPEN, "Cannot end an already ended lottery round!");
         if(noOfTickets < 2){
             revert("Cannot end lottery with less than two tickets!");
@@ -82,7 +82,7 @@ contract Lottery {
         require(lottery_state == LOTTERY_STATE.CLOSED, "Lottery has not finished getting maximum tickets");
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
         // have to be lotter owner to invoke this
-        require(msg.sender == owner, "You are not Lottery owner, you cannot invoke this!");
+        require(msg.sender == LotteryOwner, "You are not Lottery owner, you cannot invoke this!");
         // selecting a random address
         uint winner_address = select_rand() % buyers.length;
 
