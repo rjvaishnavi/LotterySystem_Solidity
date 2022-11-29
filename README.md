@@ -1,6 +1,6 @@
 # Lottery System Using Solidity
 This .sol code creates a smart contract.\
-The lottery owner initiate the contract and set up a lottery system.\
+The lottery owner initiate the contract and set up a lottery system.
 
 #### States of the Lottery System
 The lottery system has 3 states:
