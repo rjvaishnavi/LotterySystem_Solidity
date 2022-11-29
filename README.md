@@ -13,17 +13,17 @@ The owner also initiates the no of maximum tickets for the system. \
 The maximum number of tickets must be more than 1.\
 So there needs to be a minimum of 2 tickets at a time.\
 The owner also sets the price of the ticket as multiples of 0.01 ethers\
-So if the owner submits 2 as a value for the ticketPrice, the ticketPrice would actually be 0.02 ether.\
+So if the owner submits 2 as a value for the ticketPrice, the ticketPrice would actually be 0.02 ether.
 
 #### Buying a ticket
 Any one with a valid address can buy a ticket for the system, as long as they give a value equal to the ticketPrice.\
 If the maximum no of tickets have been reached, then you cannot buy any ticket. \
 If the system is CLOSED state or CALCULATING_WINNER state, then you cannot buy any tickets\.
-Once the max no of tickets have been reached, then the state is changed from OPEN to CLOSED.\
+Once the max no of tickets have been reached, then the state is changed from OPEN to CLOSED.
 
 #### Closing Lottery system
 Without reaching the default max limit of tickets, the lottery owner can close the system.\
-But the minimum no of tickets bought must be 2 for this to be invoked.\
+But the minimum no of tickets bought must be 2 for this to be invoked.
 
 #### Calculating winner
 Only the lottery owner can invoke this message.\
